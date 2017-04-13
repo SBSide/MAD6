@@ -1,65 +1,30 @@
-package com.example.iveci.mad5;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.util.ArrayList;
+package com.example.iveci.mad6;
 
 /**
  * Created by iveci on 2017-04-06.
  */
 
-public class Rest implements Parcelable {
-    String name = "";
-    String tel = "";
-    ArrayList<String> menu = new ArrayList<>(3);
-    String homepage = "";
-    String date = "";
+public class Rest {
+    private String name = "";
+    private String tel = "";
     int catnumber = 0;
 
-    public Rest(String name, String tel, ArrayList<String> menu, String homepage, String date, int catnumber) {
+    public Rest(String name, String tel, int catnumber) {
         this.name = name;
         this.tel = tel;
-        this.menu = menu;
-        this.homepage = homepage;
-        this.date = date;
         this.catnumber = catnumber;
     }
 
-    protected Rest(Parcel in) {
-        name = in.readString();
-        tel = in.readString();
-        menu = in.createStringArrayList();
-        homepage = in.readString();
-        date = in.readString();
-        catnumber = in.readInt();
+    public String getName() {
+        return name;
     }
 
-    public static final Creator<Rest> CREATOR = new Creator<Rest>() {
-        @Override
-        public Rest createFromParcel(Parcel in) {
-            return new Rest(in);
-        }
-
-        @Override
-        public Rest[] newArray(int size) {
-            return new Rest[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getTel() {
+        return tel;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(tel);
-        dest.writeStringList(menu);
-        dest.writeString(homepage);
-        dest.writeString(date);
-        dest.writeInt(catnumber);
+    public int getCatnumber() {
+        return catnumber;
     }
 
     @Override
